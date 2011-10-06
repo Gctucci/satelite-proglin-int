@@ -46,10 +46,16 @@ void aloca_vetorb(FILE * file)
     /*Abaixo a função le os arquivos de entrada para o vetor b*/
     if(file !=NULL){
         do{
-        fscanf(file, "%d", &valor);
-        fscanf(file,"%c",&espaco);
-        fscanf(file,"%d",&vetorb[0][valor-1]);
-        fscanf(file,"%c",&espaco);
+            fscanf(file, "%d", &valor);
+            fscanf(file,"%c",&espaco);
+            fscanf(file,"%d",&vetorb[0][valor-1]);
+            fscanf(file,"%c",&espaco);
+        }while (espaco != '\n');
+        do{
+            fscanf(file, "%d", &valor);
+            fscanf(file,"%c",&espaco);
+            fscanf(file,"%d",&vetorb[1][valor-1]);
+            fscanf(file,"%c",&espaco);
         }while (espaco != '\n');
         /*fscanf(file, "%c", &c);    
         while (fscanf(file,"%c",&c) != '\n')
