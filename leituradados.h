@@ -11,7 +11,8 @@ int numfaixas; /*Numero de faixas horizontal ou vertical*/
 int numfrag; /*Numero de fragmentos com ganho nao-nulo*/
 
 /*Leitura do arquivo de entrada*/
-FILE* leitura_entrada(char *nomearq[]);
+FILE* leitura_entrada(const char *nomearq[]);
+
 /*Função que aloca os valores lidos do arquivo nas 
  * estruturas de dados correspondentes*/
 void preenche_estruturas(FILE *file);
