@@ -8,7 +8,7 @@ FILE* leitura_entrada(const char *nomearq[])
 {
     FILE *file = NULL;
     file = fopen(nomearq[1], "r");
-    printf("%s",nomearq[1]);
+   // printf("%s",nomearq[1]);
 
     return file;
 }
@@ -16,8 +16,17 @@ FILE* leitura_entrada(const char *nomearq[])
 /*Aloca o numero de faixas*/
 void aloca_numfaixas(FILE * file)
 {
-   //Le o numero de faixas do arquivo
+    if(file !=NULL)
+    {
+        //Le o numero de faixas do arquivo
         fscanf(file,"%d",&numfaixas); 
+
+    }
+    else
+    {
+        printf("Houve um problema ao abrir o arquivo.\n");
+        exit(-1);
+    }
 }
 
 /*Função que aloca o vetor de custos*/
@@ -34,8 +43,8 @@ void aloca_vetorb(FILE * file)
     int valor;
 
       /*Alocação do vetor b, para linhas horizontais e verticais -
-     * vetorb[1] sao as linhas horizontais
-     * vetorb[2] sao as linhas verticais
+     * vetorb[1] - conjunto de faixas horizontais
+     * vetorb[2] - conjunto de faixas verticais
      * O numero de valores é o numero de faixas (numfaixas)*/
     vetorb = (int **)malloc(2*sizeof(int*));
     for (i = 0; i < 2; i++) {
@@ -79,7 +88,8 @@ void aloca_vetorb(FILE * file)
     }
     else
     {
-        printf("Houve um erro ao ler o arquivo.\n");
+        printf("Houve um problema ao ler o arquivo.\n");
+        exit(-1);
     }
 }
 
@@ -91,7 +101,16 @@ void aloca_variaveis();
 
 void aloca_numfrag(FILE *file)
 {
-        fscanf(file, "%d", &numfrag);
+        if(file !=NULL)
+        {
+            fscanf(file, "%d", &numfrag);
+
+        }
+        else
+        {
+            printf("Houve um problema ao abrir o arquivo.\n");
+            exit(-1);
+        }
 }
 
 /*Função que aloca os valores lidos do arquivo nas 
@@ -110,7 +129,7 @@ void preenche_estruturas(FILE *file)
     else
     {
         printf("Houve um problema ao abrir o arquivo.\n");
-        
+        exit(-1);
     }
 }
 
