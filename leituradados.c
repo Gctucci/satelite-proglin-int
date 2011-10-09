@@ -52,8 +52,8 @@ void aloca_vetorb(FILE * file)
     int valor;
 
       /*Alocação do vetor b, para linhas horizontais e verticais -
-     * vetorb[1] - conjunto de faixas horizontais
-     * vetorb[2] - conjunto de faixas verticais
+     * vetorb[0] - conjunto de faixas horizontais
+     * vetorb[1] - conjunto de faixas verticais
      * O numero de valores é o numero de faixas (numfaixas)*/
     vetorb = (int **)malloc(2*sizeof(int*));
     for (i = 0; i < 2; i++) {
@@ -135,14 +135,13 @@ void aloca_numfrag(FILE *file)
 }
 
 /*Função que aloca completamente o vetor de custos e o de coeficientes da
- * restrições, chamando as funções aloca_matriza e aloca_custos
- * como auxiliar*/
+ * restrições
 void aloca_estruturas(FILE *file)
 {
     char c;
     int i,h,v;
 
-    /*Aloca a estrutura de custos*/
+    //Aloca a estrutura de custos
     custos=(rest **)malloc(numfaixas*sizeof(rest*));
     for (i = 0; i < numfaixas; i++) {
         custos[i]=(rest *)malloc(numfaixas*sizeof(rest));
@@ -166,8 +165,35 @@ void aloca_estruturas(FILE *file)
         }
     }
 }
+*/
 
+/*Função que aloca completamente o vetor de custos e o de coeficientes da
+ * restrições*/
+void aloca_estruturas(FILE *file)
+{
+    char c;
+    int i,h,v;
 
+    //Aloca a estrutura de custos
+    custos=(rest *)malloc(numfaixas*sizeof(rest));
+
+    if(file !=NULL)
+    {
+        for (i = 0; i < numfrag; i++) {
+            fscanf(file,"%d",&(custos[i].h));
+            fscanf(file,"%c",&c);
+            fscanf(file,"%d",&(custos[i].v));
+            fscanf(file,"%c",&c);
+            fscanf(file,"%d",&(custos[i].ganho));
+            fscanf(file,"%c",&c);
+            fscanf(file,"%d", &(custos[i].memh));
+            fscanf(file,"%c",&c);
+            fscanf(file,"%d", &(custos[i].memv));
+            fscanf(file,"%c",&c);
+            
+        }
+    }
+}
 
 /*Função que aloca os valores lidos do arquivo nas 
  * estruturas de dados correspondentes*/

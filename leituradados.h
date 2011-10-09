@@ -7,11 +7,13 @@ typedef struct restricoes
     int ganho; /*Custo da faixa*/
     int memh; /*Quantidade de memoria da faixa vertical*/
     int memv; /*Quantidade de memoria da faixa vertical*/
+    int h; /*Posicao horizontal do segmento*/
+    int v; /*Posicao vertical do segmento*/
 } rest;
 
-rest **custos;/*Estrutura de dados contendo as quantidades de memoria que cada segmento ocupa, bem como o custo nao-negativo associado*/
+rest *custos;/*Estrutura de dados contendo as quantidades de memoria que cada segmento ocupa, bem como o custo nao-negativo associado*/
 int **vetorb;  /*vetor de restricoes de memoria, horizontais e verticais*/
-int **variaveis; /*matriz de variáveis*/
+int *variaveis; /*vetor de variáveis*/
 int numfaixas; /*Numero de faixas horizontal ou vertical*/
 int numfrag; /*Numero de fragmentos com ganho nao-nulo*/
 
