@@ -2,10 +2,15 @@
 #include<stdlib.h>
 #include<string.h>
 
+typedef struct restricoes
+{
+    int ganho; /*Custo da faixa*/
+    int memh; /*Quantidade de memoria da faixa vertical*/
+    int memv; /*Quantidade de memoria da faixa vertical*/
+} rest;
 
-int **custos; /*vetor de custos*/
+rest **custos;/*Estrutura de dados contendo as quantidades de memoria que cada segmento ocupa, bem como o custo nao-negativo associado*/
 int **vetorb;  /*vetor de restricoes de memoria, horizontais e verticais*/
-int **matriza; /*matriz de coeficientes da primeira retriçao*/
 int **variaveis; /*matriz de variáveis*/
 int numfaixas; /*Numero de faixas horizontal ou vertical*/
 int numfrag; /*Numero de fragmentos com ganho nao-nulo*/
@@ -18,13 +23,13 @@ FILE* leitura_entrada(const char *nomearq[]);
 void preenche_estruturas(FILE *file);
 
 /*Função que aloca o vetor de custos*/
-void aloca_custos();
+//void aloca_custos(int horizontal, int vertical, int custo);
 
 /*Função que aloca o vetor b de coeficientes das restrições*/
 void aloca_vetorb(FILE * file);
 
 /*Função que aloca a matriz de coeficientes das restrições*/
-void aloca_matriza();
+//void aloca_matriza(int horizontal, int vertical, int coef);
 
 /*Função que aloca a matriz de variáveis*/
 void aloca_variaveis();
@@ -35,3 +40,5 @@ void aloca_numfaixas(FILE * file);
 /*aloca o numero de fragmentos*/
 void aloca_numfrag(FILE * file);
 
+/*Função que aloca completamente a estrutura de custos e de coeficientes das restrições*/
+void aloca_estruturas(FILE * file);
