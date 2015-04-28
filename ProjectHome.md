@@ -1,0 +1,1 @@
+Trabalho de Heurísticas primais e método dos subgradientes aplicados a um problema de imagem de satélites, usando Programação Linear Inteira
